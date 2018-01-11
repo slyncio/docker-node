@@ -1,4 +1,4 @@
 ## Minimal docker image with docker and node
 
-This is a minimal docker image with docker and node. It uses `docker:latest` as
-base and installs nodejs (v8.9.3) on top of it.
+This is a docker image with docker and node. It uses `node:8` as
+base and installs `docker (v17.12.0~ce)` on top of it.

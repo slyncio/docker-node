@@ -1,5 +1,5 @@
-# use node:8 as base image
-FROM node:8
+# use node:8.11 as base image
+FROM node:8.11
 
 ENV DOCKER_VERSION 17.12.0~ce-0~debian
 

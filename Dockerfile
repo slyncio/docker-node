@@ -11,6 +11,7 @@ RUN apt-get update \
       curl \
       gnupg2 \
       software-properties-common \
+      jq \
     && curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add - \
     && apt-key fingerprint 0EBFCD88 \
     && add-apt-repository \

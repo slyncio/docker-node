@@ -20,7 +20,8 @@ RUN apt-get update \
    stable" \
    && apt-get update \
    && apt-get -y install docker-ce=${DOCKER_VERSION} \
-   && rm -rf /var/cache/apt
+   && rm -rf /var/cache/apt \
+   && npm install -g npm
 
 # below files are taken from docker's own image
 # see here: https://github.com/docker-library/docker/tree/master/17.12

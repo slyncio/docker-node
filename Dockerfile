@@ -1,6 +1,7 @@
 # use node:8.11 as base image
 FROM node:8.11
 
+
 # install docker, node, gcloud sdk
 ENV DOCKER_VERSION 17.12.0~ce-0~debian
 RUN apt-get update \
@@ -21,10 +22,12 @@ RUN apt-get update \
    && apt-get -y install docker-ce=${DOCKER_VERSION} \
    && rm -rf /var/cache/apt \
    && npm install -g npm \
-   && wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz -nv \
-   && tar zxf google-cloud-sdk.tar.gz && ./google-cloud-sdk/install.sh --usage-reporting=false --path-update=true \
+   && wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-262.0.0-linux-x86_64.tar.gz -nv \
+   && tar zxf google-cloud-sdk-262.0.0-linux-x86_64.tar.gz \
+   && ./google-cloud-sdk/install.sh --usage-reporting=false --path-update=true \
    && ./google-cloud-sdk/bin/gcloud --quiet components update \
-   && ./google-cloud-sdk/bin/gcloud components install docker-credential-gcr
+   && ./google-cloud-sdk/bin/gcloud components install docker-credential-gcr \
+   && rm -rf ./google-cloud-sdk/.install
 ENV PATH "${PATH}:${PWD}/google-cloud-sdk/bin"
 
 # below files are taken from docker's own image

@@ -1,5 +1,5 @@
-# use node:12 as base image
-FROM node:12-slim
+# use node:8-slim as base image
+FROM node:8-slim
 
 # install docker, node, gcloud sdk
 ENV DOCKER_VERSION 17.12.0~ce-0~debian

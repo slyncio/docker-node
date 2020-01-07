@@ -31,9 +31,9 @@ COPY modprobe.sh /usr/local/bin/modprobe
 COPY docker-entrypoint.sh /usr/local/bin/
 
 # add a new user
-RUN useradd -u 1001 -s /bin/zsh -m dev
-USER dev
-WORKDIR /home/dev
+# RUN useradd -u 1001 -s /bin/zsh -m dev
+# USER dev
+# WORKDIR /home/dev
 
 # install gcloud
 RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-274.0.1-linux-x86_64.tar.gz -nv \
@@ -42,10 +42,10 @@ RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud
    && ./google-cloud-sdk/bin/gcloud --quiet components update \
    && ./google-cloud-sdk/bin/gcloud components install docker-credential-gcr \
    && rm -rf ./google-cloud-sdk/.install
-ENV PATH "${PATH}:/home/dev/google-cloud-sdk/bin"
+ENV PATH "${PATH}:${PWD}/google-cloud-sdk/bin"
 
 # install ohmyzsh
-RUN sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+# RUN sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 # the entry point script is needed mainly
 # to support use of docker:dind
